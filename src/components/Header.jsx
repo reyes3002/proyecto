@@ -1,6 +1,6 @@
 import Guitar from "./Guitar";
 
-export default function Header2({cart}){
+export default function Header({cart}){
     return(
         
          <header className="py-5 header">

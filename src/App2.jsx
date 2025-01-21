@@ -1,56 +1,103 @@
 import {useState,useEffect} from 'react'
-import { Fragment } from 'react'
 import Header from "./components/Header"
-import Header2 from "./components/Header2"
 import Guitar from "./components/Guitar"
 import { db } from './data/db'
-//con los props se pueden pasar strings
-//objetos y funciones
+//componentes inician con mayuscula
 function App2() {
 
+    
+  //los hooks van en la parte superior de los componentes de react 
+  //no dentro de condicionales ni despues de un return
+  //uso de useState
+  /*
+    const [auth,setAuth]=useState(true)
+    const [total,setTotal]=useState(0)
+    const [cart,setCart]=useState([])
+    */
 
-   const [data,setData]=useState(db)
-   const [cart,setCart]=useState([])
 
-   //esto no inmuta el estate
-   //usar push si lo modifica y por eso no lo usamos
-   function addToCart(item){
-
-    const itemExist=cart.findIndex(guitar=>guitar.id===item.id)
-    if(itemExist>=0){//exite
-      const updatedCart=[...cart]//+spread operator,copia del state
-      updatedCart[itemExist].quantity++
-      setCart(updatedCart)
-    }else{
-      item.quantity=1
-      setCart([cart,item])
+    //no hooks dentro de funciones
+    /*
+    function registrarHook(){
+      const [cart,setCart]=useState([])
     }
-    
-   }
+    */
+  //lo que no se debe de hacer 
+  /*
+    if(auth){
+      const [cart,setCart]=useState([])
+      console.log(cart)
+    }
+    setTimeout(() => {
+      setAuth(false)
+    }, 3000);
+    */  
+    //para archivo local
+   const [data,setData]=useState(db)
+   console.log(data)
 
+   //para una API
+   
+
+
+
+   //statements y expresiones
+   //statement instruccion para hacer algo
+   //expression
+   //algo que produce un valor
   return (
+    <>
+    {
+     //rederizado el componente
     
-    <Fragment>
-    <Header 
-    cart={cart}
-    />
-    
+     
+    <Header />
+    //<Header2 />
+    }
+  
+
+   
+
     <main className="container-xl mt-5">
-        <h2 className="text-center">Nuestra Colección</h2>
+        <h2 /*onClick={registrarHook} */className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-         
-          {data.map((guitar)=> (
+          {
+          /**
+          Con las llaves decimos que es codigo JS*/
+        }
+          
+            
+           
+          //al se un arreglo podemos acceder a todos los array methods que existen para los arreglos
+          //colocar un valor inicial si espero una coleccion dentro de un arreglo para tener acceso a esos array methods
+          //usamos arrow functions
+        
+
+          {data.map(()=> (
+            
+            //se da por implicito que vamos a retornar algo,por eso no esta el return
+            //solo retorna el valor que tengamos en este arraw function
+            
+            //props
+            //2 partes
+            //izq-Nombre del prop
+            //der-valor que le quiero pasar
+            //todos los valores que se van a pasar
             <Guitar 
-            key={guitar.id}
+            price={100}
+            auth={true}
+
+            //creamos un prop de guitar y sera igual a guitar
             guitar={guitar}
-            setCart={setCart}
-            addToCart={addToCart}
             
             />
+
           ))}
+         
         </div>
     </main>
+
 
     <footer className="bg-dark mt-5 py-5">
         <div className="container-xl">
@@ -58,11 +105,11 @@ function App2() {
         </div>
     </footer>
       
-    </Fragment>
+    </>
   )
 }
 
-export default App2
+export default App
 
 
 

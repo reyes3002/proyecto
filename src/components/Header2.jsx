@@ -8,7 +8,7 @@ import React from "react"
 
 
 //2.definir el state o funciones
-export default function Header(){
+export default function Header2(){
 //que colocar antes del return
 //se puede escribir codigo de js
 

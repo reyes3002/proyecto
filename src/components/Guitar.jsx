@@ -1,10 +1,7 @@
-//le pasamos el prop
-export default function Guitar({guitar,addToCart}){
-    //aplicale destructuring a guitar 
-    //sacar los valores de cada uno
-    const {id,name,image,description,price}=guitar  
 
-    
+export default function Guitar({guitar,addToCart}){
+   
+    const {id,name,image,description,price}=guitar  
 
     return(
         <div className="col-md-6 col-lg-4 my-4 row align-items-center">
@@ -19,10 +16,6 @@ export default function Guitar({guitar,addToCart}){
             <button 
                 type="button"
                 className="btn btn-dark w-100"
-                //espera el evento para accionar
-                 //setear lo que tenga en el carrito 
-                //pero toma una copia de lo que tenga y agregale el nuevo elemento
-        
                 onClick={()=>addToCart(guitar)}
             >Agregar al Carrito</button>
         </div>
